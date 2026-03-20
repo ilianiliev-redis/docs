@@ -80,16 +80,43 @@ arguments:
       since: 1.8.0
       token: TWA
       type: pure-token
+    - name: countnan
+      since: 8.6.0
+      token: COUNTNAN
+      type: pure-token
+    - name: countall
+      since: 8.6.0
+      token: COUNTALL
+      type: pure-token
     name: aggregator
     token: AGGREGATION
     type: oneof
   - name: bucketDuration
     type: integer
-  - name: buckettimestamp
+  - arguments:
+    - name: '-'
+      token: '-'
+      type: pure-token
+    - name: start
+      token: start
+      type: pure-token
+    - name: +
+      token: +
+      type: pure-token
+    - name: end
+      token: end
+      type: pure-token
+    - name: '~'
+      token: '~'
+      type: pure-token
+    - name: mid
+      token: mid
+      type: pure-token
+    name: buckettimestamp
     optional: true
     since: 1.8.0
     token: BUCKETTIMESTAMP
-    type: pure-token
+    type: oneof
   - name: empty
     optional: true
     since: 1.8.0
@@ -125,7 +152,8 @@ syntax: "TS.REVRANGE key fromTimestamp toTimestamp\n  [LATEST]\n  [FILTER_BY_TS 
 syntax_fmt: "TS.REVRANGE key fromTimestamp toTimestamp [LATEST]\n  [FILTER_BY_TS\_\
   Timestamp [Timestamp ...]] [FILTER_BY_VALUE min max]\n  [COUNT\_count] [[ALIGN\_\
   value] AGGREGATION\_<AVG | FIRST | LAST | MIN\n  | MAX | SUM | RANGE | COUNT | STD.P\
-  \ | STD.S | VAR.P | VAR.S | TWA>\n  bucketDuration [BUCKETTIMESTAMP] [EMPTY]]"
+  \ | STD.S | VAR.P | VAR.S | TWA\n  | COUNTNAN | COUNTALL> bucketDuration [BUCKETTIMESTAMP\_\
+  <- | start\n  | + | end | ~ | mid>] [EMPTY]]"
 title: TS.REVRANGE
 ---
 

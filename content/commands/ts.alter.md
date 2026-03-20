@@ -37,7 +37,6 @@ arguments:
   optional: true
   token: DUPLICATE_POLICY
   type: oneof
-
 - arguments:
   - name: label
     type: string
@@ -73,7 +72,7 @@ summary: Update the retention, chunk size, duplicate policy, and labels of an ex
 syntax: "TS.ALTER key \n  [RETENTION retentionPeriod] \n  [CHUNK_SIZE size] \n  [DUPLICATE_POLICY\
   \ policy] \n  [LABELS [label value ...]]\n"
 syntax_fmt: "TS.ALTER key [RETENTION\_retentionPeriod] [CHUNK_SIZE\_size]\n  [DUPLICATE_POLICY\_\
-  <BLOCK | FIRST | LAST | MIN | MAX | SUM>] [LABELS\_label value\n  [label value ...]]"
+  <BLOCK | FIRST | LAST | MIN | MAX | SUM>]\n  [LABELS\_label value [label value ...]]"
 title: TS.ALTER
 ---
 

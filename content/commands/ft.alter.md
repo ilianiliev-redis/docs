@@ -3,18 +3,23 @@ acl_categories:
 - '@search'
 arguments:
 - name: index
+  summary: Specifies the name of the index. The index must be created using `FT.CREATE`.
   type: string
 - name: skipinitialscan
   optional: true
+  summary: Skips the initial scan of the database when creating the index.
   token: SKIPINITIALSCAN
   type: pure-token
 - name: schema
+  summary: Defines the fields in the index and their properties, such as type (`TEXT`,
+    `TAG`, `NUMERIC`, etc.).
   token: SCHEMA
   type: pure-token
 - name: add
   token: ADD
   type: pure-token
 - name: field
+  summary: Specifies a field in the index schema with its properties.
   type: string
 - name: options
   type: string

@@ -18,12 +18,14 @@ categories:
 command_flags:
 - readonly
 complexity: O(1)
+deprecated_since: 8.0.0
 description: Help description of runtime configuration options
 group: search
 hidden: true
 linkTitle: FT.CONFIG HELP
 module: Search
 railroad_diagram: /images/railroad/ft.config-help.svg
+replaced_by: CONFIG HELP
 since: 1.0.0
 stack_path: docs/interact/search-and-query
 summary: Help description of runtime configuration options

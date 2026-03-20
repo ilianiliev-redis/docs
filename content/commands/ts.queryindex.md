@@ -40,7 +40,7 @@ railroad_diagram: /images/railroad/ts.queryindex.svg
 since: 1.0.0
 stack_path: docs/data-types/timeseries
 summary: Get all time series keys matching a filter list
-syntax: "TS.QUERYINDEX filterExpr..."
+syntax: TS.QUERYINDEX filterExpr...
 syntax_fmt: "TS.QUERYINDEX <l=v | l!=v | l= | l!= | l=(v1,v2,...) |\n  l!=(v1,v2,...)\
   \ [l=v | l!=v | l= | l!= | l=(v1,v2,...) |\n  l!=(v1,v2,...) ...]>"
 title: TS.QUERYINDEX

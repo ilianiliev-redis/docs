@@ -5,6 +5,7 @@ arguments:
 - name: alias
   type: string
 - name: index
+  summary: Specifies the name of the index. The index must be created using `FT.CREATE`.
   type: string
 categories:
 - docs

@@ -5,6 +5,8 @@ arguments:
 - name: key
   type: string
 - name: prefix
+  summary: Filters indexed documents to include only keys that start with the specified
+    prefix.
   type: string
 - name: fuzzy
   optional: true
@@ -12,6 +14,7 @@ arguments:
   type: pure-token
 - name: withscores
   optional: true
+  summary: Includes the relative scores of each document in the search results.
   token: WITHSCORES
   type: pure-token
 - name: withpayloads

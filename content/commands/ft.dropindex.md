@@ -6,6 +6,7 @@ acl_categories:
 - '@write'
 arguments:
 - name: index
+  summary: Specifies the name of the index. The index must be created using `FT.CREATE`.
   type: string
 - arguments:
   - name: delete docs

@@ -8,10 +8,11 @@ arguments:
   type: string
 - name: toTimestamp
   type: string
-- name: LATEST
+- name: latest
   optional: true
   since: 1.8.0
-  type: string
+  token: LATEST
+  type: pure-token
 - multiple: true
   name: Timestamp
   optional: true
@@ -94,6 +95,14 @@ arguments:
       since: 1.8.0
       token: TWA
       type: pure-token
+    - name: countnan
+      since: 8.6.0
+      token: COUNTNAN
+      type: pure-token
+    - name: countall
+      since: 8.6.0
+      token: COUNTALL
+      type: pure-token
     name: aggregator
     token: AGGREGATION
     type: oneof
@@ -170,10 +179,10 @@ syntax: "TS.MREVRANGE fromTimestamp toTimestamp\n  [LATEST]\n  [FILTER_BY_TS ts.
 syntax_fmt: "TS.MREVRANGE fromTimestamp toTimestamp [LATEST]\n  [FILTER_BY_TS\_Timestamp\
   \ [Timestamp ...]] [FILTER_BY_VALUE min max]\n  [WITHLABELS | SELECTED_LABELS label1\
   \ [label1 ...]] [COUNT\_count]\n  [[ALIGN\_value] AGGREGATION\_<AVG | FIRST | LAST\
-  \ | MIN | MAX | SUM |\n  RANGE | COUNT | STD.P | STD.S | VAR.P | VAR.S | TWA>\n\
-  \  bucketDuration [BUCKETTIMESTAMP] [EMPTY]] FILTER\_<l=v | l!=v | l=\n  | l!= |\
-  \ l=(v1,v2,...) | l!=(v1,v2,...) [l=v | l!=v | l= | l!= |\n  l=(v1,v2,...) | l!=(v1,v2,...)\
-  \ ...]> [GROUPBY label REDUCE\n  reducer]"
+  \ | MIN | MAX | SUM |\n  RANGE | COUNT | STD.P | STD.S | VAR.P | VAR.S | TWA | COUNTNAN\
+  \ |\n  COUNTALL> bucketDuration [BUCKETTIMESTAMP] [EMPTY]] FILTER\_<l=v |\n  l!=v\
+  \ | l= | l!= | l=(v1,v2,...) | l!=(v1,v2,...) [l=v | l!=v | l=\n  | l!= | l=(v1,v2,...)\
+  \ | l!=(v1,v2,...) ...]> [GROUPBY label REDUCE\n  reducer]"
 title: TS.MREVRANGE
 ---
 {{< note >}}

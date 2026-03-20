@@ -19,10 +19,15 @@ command_flags:
 - noscript
 complexity: O(K) where K is the number of hotkeys returned.
 container: HOTKEYS
-description: Returns lists of top K hotkeys depending on metrics chosen in HOTKEYS START command.
+description: Returns lists of top K hotkeys depending on metrics chosen in HOTKEYS
+  START command.
 function: hotkeysCommand
 group: server
 hidden: false
+hints:
+- nondeterministic_output
+- request_policy:special
+- response_policy:special
 linkTitle: HOTKEYS GET
 railroad_diagram: /images/railroad/hotkeys-get.svg
 reply_schema:
@@ -44,7 +49,8 @@ reply_schema:
   - description: If no tracking is started
     type: 'null'
 since: 8.6.0
-summary: Returns lists of top K hotkeys depending on metrics chosen in HOTKEYS START command.
+summary: Returns lists of top K hotkeys depending on metrics chosen in HOTKEYS START
+  command.
 syntax_fmt: HOTKEYS GET
 title: HOTKEYS GET
 ---

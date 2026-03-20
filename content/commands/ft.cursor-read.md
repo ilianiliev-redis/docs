@@ -4,6 +4,7 @@ acl_categories:
 - '@search'
 arguments:
 - name: index
+  summary: Specifies the name of the index. The index must be created using `FT.CREATE`.
   type: string
 - name: cursor_id
   type: integer
@@ -21,6 +22,8 @@ categories:
 - oss
 - kubernetes
 - clients
+command_tips:
+- REQUEST_POLICY:SPECIAL
 complexity: O(1)
 description: Reads from a cursor
 group: search

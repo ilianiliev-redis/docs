@@ -3,11 +3,13 @@ acl_categories:
 - '@search'
 arguments:
 - name: index
+  summary: Specifies the name of the index. The index must be created using `FT.CREATE`.
   type: string
 - name: synonym_group_id
   type: string
 - name: skipinitialscan
   optional: true
+  summary: Skips the initial scan of the database when creating the index.
   token: SKIPINITIALSCAN
   type: pure-token
 - multiple: true

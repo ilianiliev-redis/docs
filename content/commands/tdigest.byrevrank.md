@@ -18,7 +18,7 @@ categories:
 - oss
 - kubernetes
 - clients
-complexity: O(1)
+complexity: O(N) where N is the number of reverse ranks specified.
 description: Returns, for each input reverse rank, an estimation of the floating-point
   value with that reverse rank
 group: tdigest

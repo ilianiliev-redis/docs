@@ -1,26 +1,33 @@
 ---
 acl_categories:
-- STREAM
+- '@write'
+- '@stream'
+- '@fast'
 arguments:
-- key_spec_index: 0
+- display_text: key
+  key_spec_index: 0
   name: key
   type: key
 - arguments:
-  - name: duration-token
+  - display_text: idmp-duration-token
+    name: idmp-duration-token
     token: IDMP-DURATION
     type: pure-token
-  - name: duration
+  - display_text: duration
+    name: duration
     type: integer
-  name: duration-block
+  name: idmp-duration-block
   optional: true
   type: block
 - arguments:
-  - name: maxsize-token
+  - display_text: idmp-maxsize-token
+    name: idmp-maxsize-token
     token: IDMP-MAXSIZE
     type: pure-token
-  - name: maxsize
+  - display_text: maxsize
+    name: maxsize
     type: integer
-  name: maxsize-block
+  name: idmp-maxsize-block
   optional: true
   type: block
 arity: -2
@@ -35,26 +42,28 @@ categories:
 - kubernetes
 - clients
 command_flags:
-- WRITE
-- FAST
+- write
+- fast
 complexity: O(1)
 description: Sets the IDMP configuration parameters for a stream.
 function: xcfgsetCommand
 group: stream
 hidden: false
 key_specs:
-- begin_search:
-    index:
-      pos: 1
+- RW: true
+  begin_search:
+    spec:
+      index: 1
+    type: index
   find_keys:
-    range:
+    spec:
+      keystep: 1
       lastkey: 0
       limit: 0
-      step: 1
-  flags:
-  - RW
-  - UPDATE
+    type: range
+  update: true
 linkTitle: XCFGSET
+railroad_diagram: /images/railroad/xcfgset.svg
 reply_schema:
   const: OK
 since: 8.6.0

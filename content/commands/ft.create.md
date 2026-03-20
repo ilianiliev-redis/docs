@@ -18,22 +18,6 @@ arguments:
   token: 'ON'
   type: oneof
 - arguments:
-  - name: enable
-    summary: Maintains an inverted index of all document IDs for wildcard queries.
-    token: ENABLE
-    type: pure-token
-  - name: disable
-    summary: Does not maintain an inverted index of all document IDs (default behavior).
-    token: DISABLE
-    type: pure-token
-  name: indexall
-  optional: true
-  since: 8.0.0
-  summary: When enabled, maintains an inverted index of all document IDs to optimize
-    wildcard queries in heavy update scenarios.
-  token: INDEXALL
-  type: oneof
-- arguments:
   - name: count
     token: PREFIX
     type: integer
@@ -152,9 +136,6 @@ arguments:
     - name: geo
       token: GEO
       type: pure-token
-    - name: geoshape
-      token: GEOSHAPE
-      type: pure-token
     - name: vector
       token: VECTOR
       type: pure-token
@@ -223,14 +204,15 @@ syntax: "FT.CREATE index \n  [ON HASH | JSON] \n  [PREFIX count prefix [prefix .
   \ \n  [SCORE default_score] \n  [SCORE_FIELD score_attribute] \n  [PAYLOAD_FIELD\
   \ payload_attribute] \n  [MAXTEXTFIELDS] \n  [TEMPORARY seconds] \n  [NOOFFSETS]\
   \ \n  [NOHL] \n  [NOFIELDS] \n  [NOFREQS] \n  [STOPWORDS count [stopword ...]] \n\
-  \  [SKIPINITIALSCAN]\n  [INDEXALL <ENABLE | DISABLE>]\n  SCHEMA field_name [AS alias] TEXT | TAG | NUMERIC | GEO\
-  \ | VECTOR | GEOSHAPE [ SORTABLE [UNF]] \n  [NOINDEX] [ field_name [AS alias] TEXT\
-  \ | TAG | NUMERIC | GEO | VECTOR | GEOSHAPE [ SORTABLE [UNF]] [NOINDEX] ...]\n"
+  \  [SKIPINITIALSCAN]\n  [INDEXALL <ENABLE | DISABLE>]\n  SCHEMA field_name [AS alias]\
+  \ TEXT | TAG | NUMERIC | GEO | VECTOR | GEOSHAPE [ SORTABLE [UNF]] \n  [NOINDEX]\
+  \ [ field_name [AS alias] TEXT | TAG | NUMERIC | GEO | VECTOR | GEOSHAPE [ SORTABLE\
+  \ [UNF]] [NOINDEX] ...]\n"
 syntax_fmt: "FT.CREATE index [ON\_<HASH | JSON>] [PREFIX\_count prefix [prefix\n \
   \ ...]] [FILTER\_filter] [LANGUAGE\_default_lang]\n  [LANGUAGE_FIELD\_lang_attribute]\
   \ [SCORE\_default_score]\n  [SCORE_FIELD\_score_attribute] [PAYLOAD_FIELD\_payload_attribute]\n\
   \  [MAXTEXTFIELDS] [TEMPORARY\_seconds] [NOOFFSETS] [NOHL] [NOFIELDS]\n  [NOFREQS]\
-  \ [STOPWORDS\_count [stopword [stopword ...]]]\n  [SKIPINITIALSCAN] [INDEXALL <ENABLE | DISABLE>] SCHEMA field_name\
+  \ [STOPWORDS\_count [stopword [stopword ...]]]\n  [SKIPINITIALSCAN] SCHEMA field_name\
   \ [AS\_alias] <TEXT | TAG |\n  NUMERIC | GEO | VECTOR> [WITHSUFFIXTRIE] [INDEXEMPTY]\n\
   \  [INDEXMISSING] [SORTABLE [UNF]] [NOINDEX] [field_name [AS\_alias]\n  <TEXT |\
   \ TAG | NUMERIC | GEO | VECTOR> [WITHSUFFIXTRIE]\n  [INDEXEMPTY] [INDEXMISSING]\
