@@ -23,6 +23,8 @@ description: Stops hotkeys tracking.
 function: hotkeysCommand
 group: server
 hidden: false
+hints:
+- request_policy:special
 linkTitle: HOTKEYS STOP
 railroad_diagram: /images/railroad/hotkeys-stop.svg
 reply_schema:

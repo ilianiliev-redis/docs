@@ -3,12 +3,15 @@ acl_categories:
 - '@search'
 arguments:
 - name: index
+  summary: Specifies the name of the index. The index must be created using `FT.CREATE`.
   type: string
 - name: query
+  summary: Specifies the query to profile and analyze performance.
   type: string
 - name: dialect
   optional: true
   since: 2.4.3
+  summary: Sets the query dialect version to be used.
   token: DIALECT
   type: integer
 categories:

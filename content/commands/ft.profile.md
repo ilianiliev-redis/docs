@@ -4,6 +4,7 @@ acl_categories:
 - '@search'
 arguments:
 - name: index
+  summary: Specifies the name of the index. The index must be created using `FT.CREATE`.
   type: string
 - arguments:
   - name: search
@@ -16,12 +17,14 @@ arguments:
   type: oneof
 - name: limited
   optional: true
+  summary: Restricts profiling to the initial phase of the query execution.
   token: LIMITED
   type: pure-token
 - name: queryword
   token: QUERY
   type: pure-token
 - name: query
+  summary: Specifies the query to profile and analyze performance.
   type: string
 categories:
 - docs

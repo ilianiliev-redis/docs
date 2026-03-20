@@ -37,7 +37,7 @@ module: Bloom
 railroad_diagram: /images/railroad/topk.reserve.svg
 since: 2.0.0
 stack_path: docs/data-types/probabilistic
-summary: Initializes a TopK with specified parameters
+summary: Initializes a Top-K sketch with specified parameters
 syntax_fmt: TOPK.RESERVE key topk [width depth decay]
 title: TOPK.RESERVE
 ---

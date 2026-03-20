@@ -4,15 +4,19 @@ acl_categories:
 - '@search'
 arguments:
 - name: index
+  summary: Specifies the name of the index. The index must be created using `FT.CREATE`.
   type: string
 - name: query
+  summary: Specifies the query to profile and analyze performance.
   type: string
 - name: nocontent
   optional: true
+  summary: Returns only the document IDs in the search results, excluding the content.
   token: NOCONTENT
   type: pure-token
 - name: verbatim
   optional: true
+  summary: Searches using the exact query terms without stemming or query expansion.
   token: VERBATIM
   type: pure-token
 - name: nostopwords
@@ -21,6 +25,7 @@ arguments:
   type: pure-token
 - name: withscores
   optional: true
+  summary: Includes the relative scores of each document in the search results.
   token: WITHSCORES
   type: pure-token
 - name: withpayloads
@@ -29,6 +34,7 @@ arguments:
   type: pure-token
 - name: withsortkeys
   optional: true
+  summary: Returns the sorting key value alongside the document ID.
   token: WITHSORTKEYS
   type: pure-token
 - arguments:
@@ -42,6 +48,8 @@ arguments:
   multiple: true
   name: filter
   optional: true
+  summary: Applies a numeric range filter to restrict results to documents with field
+    values within the specified range.
   type: block
 - arguments:
   - name: geo_field
@@ -88,6 +96,7 @@ arguments:
     type: string
   - multiple: true
     name: field
+    summary: Specifies a field in the index schema with its properties.
     type: string
   name: in_fields
   optional: true
@@ -119,6 +128,7 @@ arguments:
       type: string
     - multiple: true
       name: field
+      summary: Specifies a field in the index schema with its properties.
       type: string
     name: fields
     optional: true
@@ -137,9 +147,12 @@ arguments:
     type: string
   name: summarize
   optional: true
+  summary: Splits a field into contextual fragments surrounding the found terms, Note
+    that summarize for JSON documents is not currently supported.
   type: block
 - arguments:
   - name: highlight
+    summary: Highlights terms in the search results, with customizable tags for emphasis.
     token: HIGHLIGHT
     type: pure-token
   - arguments:
@@ -148,6 +161,7 @@ arguments:
       type: string
     - multiple: true
       name: field
+      summary: Specifies a field in the index schema with its properties.
       type: string
     name: fields
     optional: true
@@ -165,6 +179,8 @@ arguments:
     type: block
   name: highlight
   optional: true
+  summary: Highlights terms in the search results, with customizable tags for emphasis.
+    Note that highlight for JSON documents is not currently supported.
   type: block
 - name: slop
   optional: true
@@ -172,6 +188,7 @@ arguments:
   type: integer
 - name: timeout
   optional: true
+  summary: Sets a time limit for query execution, specified in milliseconds.
   token: TIMEOUT
   type: integer
 - name: inorder
@@ -180,6 +197,8 @@ arguments:
   type: pure-token
 - name: language
   optional: true
+  summary: Specifies the default language for full-text search, influencing stemming
+    and stop-word behavior.
   token: LANGUAGE
   type: string
 - name: expander
@@ -246,6 +265,7 @@ arguments:
 - name: dialect
   optional: true
   since: 2.4.3
+  summary: Sets the query dialect version to be used.
   token: DIALECT
   type: integer
 categories:
@@ -275,18 +295,18 @@ since: 1.0.0
 stack_path: docs/interact/search-and-query
 summary: Searches the index with a textual query, returning either documents or just
   ids
-syntax: "FT.SEARCH index query \n  [NOCONTENT] \n  [VERBATIM] \n  [NOSTOPWORDS] \n  [WITHSCORES]\
-  \ \n  [WITHPAYLOADS] \n  [WITHSORTKEYS] \n  [FILTER numeric_field min max [ FILTER\
-  \ numeric_field min max ...]] \n  [GEOFILTER geo_field lon lat radius m | km | mi\
-  \ | ft [ GEOFILTER geo_field lon lat radius m | km | mi | ft ...]] \n  [INKEYS count\
-  \ key [key ...]] \n  [INFIELDS count field [field ...]] \n  [RETURN count identifier\
-  \ [AS property] [ identifier [AS property] ...]] \n  [SUMMARIZE [ FIELDS count field\
-  \ [field ...]] [FRAGS num] [LEN fragsize] [SEPARATOR separator]] \n  [HIGHLIGHT\
-  \ [ FIELDS count field [field ...]] [ TAGS open close]] \n  [SLOP slop] \n  [TIMEOUT\
-  \ timeout] \n  [INORDER] \n  [LANGUAGE language] \n  [EXPANDER expander] \n  [SCORER\
-  \ scorer] \n  [EXPLAINSCORE] \n  [PAYLOAD payload] \n  [SORTBY sortby [ ASC | DESC]\
-  \ [WITHCOUNT | WITHOUTCOUNT]] \n  [LIMIT offset num] \n  [PARAMS nargs name value [ name value\
-  \ ...]] \n  [DIALECT dialect]\n"
+syntax: "FT.SEARCH index query \n  [NOCONTENT] \n  [VERBATIM] \n  [NOSTOPWORDS] \n\
+  \  [WITHSCORES] \n  [WITHPAYLOADS] \n  [WITHSORTKEYS] \n  [FILTER numeric_field\
+  \ min max [ FILTER numeric_field min max ...]] \n  [GEOFILTER geo_field lon lat\
+  \ radius m | km | mi | ft [ GEOFILTER geo_field lon lat radius m | km | mi | ft\
+  \ ...]] \n  [INKEYS count key [key ...]] \n  [INFIELDS count field [field ...]]\
+  \ \n  [RETURN count identifier [AS property] [ identifier [AS property] ...]] \n\
+  \  [SUMMARIZE [ FIELDS count field [field ...]] [FRAGS num] [LEN fragsize] [SEPARATOR\
+  \ separator]] \n  [HIGHLIGHT [ FIELDS count field [field ...]] [ TAGS open close]]\
+  \ \n  [SLOP slop] \n  [TIMEOUT timeout] \n  [INORDER] \n  [LANGUAGE language] \n\
+  \  [EXPANDER expander] \n  [SCORER scorer] \n  [EXPLAINSCORE] \n  [PAYLOAD payload]\
+  \ \n  [SORTBY sortby [ ASC | DESC] [WITHCOUNT | WITHOUTCOUNT]] \n  [LIMIT offset\
+  \ num] \n  [PARAMS nargs name value [ name value ...]] \n  [DIALECT dialect]\n"
 syntax_fmt: "FT.SEARCH index query [NOCONTENT] [VERBATIM] [NOSTOPWORDS]\n  [WITHSCORES]\
   \ [WITHPAYLOADS] [WITHSORTKEYS] [FILTER\_numeric_field\n  min max [FILTER\_numeric_field\
   \ min max ...]] [GEOFILTER\_geo_field\n  lon lat radius <m | km | mi | ft> [GEOFILTER\_\

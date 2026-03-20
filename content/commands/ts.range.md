@@ -80,6 +80,14 @@ arguments:
       since: 1.8.0
       token: TWA
       type: pure-token
+    - name: countnan
+      since: 8.6.0
+      token: COUNTNAN
+      type: pure-token
+    - name: countall
+      since: 8.6.0
+      token: COUNTALL
+      type: pure-token
     name: aggregator
     token: AGGREGATION
     type: oneof
@@ -125,7 +133,7 @@ syntax: "TS.RANGE key fromTimestamp toTimestamp\n  [LATEST]\n  [FILTER_BY_TS ts.
 syntax_fmt: "TS.RANGE key fromTimestamp toTimestamp [LATEST]\n  [FILTER_BY_TS\_Timestamp\
   \ [Timestamp ...]] [FILTER_BY_VALUE min max]\n  [COUNT\_count] [[ALIGN\_value] AGGREGATION\_\
   <AVG | FIRST | LAST | MIN\n  | MAX | SUM | RANGE | COUNT | STD.P | STD.S | VAR.P\
-  \ | VAR.S | TWA>\n  bucketDuration [BUCKETTIMESTAMP] [EMPTY]]"
+  \ | VAR.S | TWA\n  | COUNTNAN | COUNTALL> bucketDuration [BUCKETTIMESTAMP] [EMPTY]]"
 title: TS.RANGE
 ---
 

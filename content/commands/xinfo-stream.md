@@ -4,14 +4,17 @@ acl_categories:
 - '@stream'
 - '@slow'
 arguments:
-- key_spec_index: 0
+- display_text: key
+  key_spec_index: 0
   name: key
   type: key
 - arguments:
-  - name: full
+  - display_text: full
+    name: full
     token: FULL
     type: pure-token
-  - name: count
+  - display_text: count
+    name: count
     optional: true
     token: COUNT
     type: integer

@@ -20,7 +20,7 @@ categories:
 - oss
 - kubernetes
 - clients
-complexity: O(k) where k is the value of top-k
+complexity: O(k*log(k)) where k is the value of top-k
 description: Return the full list of items in the Top-K sketch
 group: topk
 hidden: false
@@ -29,7 +29,7 @@ module: Bloom
 railroad_diagram: /images/railroad/topk.list.svg
 since: 2.0.0
 stack_path: docs/data-types/probabilistic
-summary: Return full list of items in Top K list
+summary: Return the full list of items in Top-K sketch.
 syntax_fmt: TOPK.LIST key [WITHCOUNT]
 title: TOPK.LIST
 ---

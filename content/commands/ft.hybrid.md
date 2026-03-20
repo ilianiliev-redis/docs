@@ -71,7 +71,8 @@ arguments:
     name: vector_query_type
     optional: true
     type: oneof
-  - name: filter
+  - expression: true
+    name: filter
     optional: true
     token: FILTER
     type: string
@@ -429,7 +430,7 @@ arguments:
     - arguments:
       - token: timestamp
       name: month
-      summary: Round a Unix timestamp to the beginning of the current month.
+      summary: Round a unix timestamp to the beginning of the current month.
       token: month
       type: function
     - arguments:
@@ -471,7 +472,7 @@ arguments:
     expression: true
     name: expression
     token: APPLY
-    type: string
+    type: block
   - name: name
     token: AS
     type: string
@@ -479,11 +480,31 @@ arguments:
   name: apply
   optional: true
   type: block
-- expression: true
+- arguments:
+  - name: count
+    type: integer
+  - expression: true
+    name: filter_expression
+    type: string
+  - arguments:
+    - name: adhoc
+      token: ADHOC
+      type: pure-token
+    - name: batches
+      token: BATCHES
+      type: pure-token
+    name: policy
+    optional: true
+    token: POLICY
+    type: oneof
+  - name: batch_size_value
+    optional: true
+    token: BATCH_SIZE
+    type: integer
   name: filter
   optional: true
   token: FILTER
-  type: string
+  type: block
 categories:
 - docs
 - develop
@@ -501,20 +522,35 @@ group: search
 hidden: false
 linkTitle: FT.HYBRID
 railroad_diagram: /images/railroad/ft.hybrid.svg
-since: 8.4.0
+since: 8.4.4
 summary: Performs hybrid search combining text search and vector similarity search
-syntax_fmt: "FT.HYBRID index\n  SEARCH query\n    [SCORER scorer]\n    [YIELD_SCORE_AS\
-  \ name]\n  VSIM vector_field $vector_param\n    [KNN count K k [EF_RUNTIME ef_runtime]]\n\
-  \    [RANGE count RADIUS radius [EPSILON epsilon]]\n    [YIELD_SCORE_AS name]\n\
-  \    [FILTER filter]\n  [COMBINE RRF count [CONSTANT constant] [WINDOW window]\
-  \ [YIELD_SCORE_AS name]]\n  [COMBINE LINEAR count [[ALPHA alpha] [BETA beta]] [WINDOW\
-  \ window] [YIELD_SCORE_AS name]]\n  [LIMIT offset num]\n  [SORTBY count sortby\
-  \ [ASC | DESC]]\n  [NOSORT]\n  [LOAD count field [field ...]]\n  [LOAD *]\n  [GROUPBY\
-  \ nargs property [property ...]\n  [GROUPBY nargs property [property ...]\n   \
-  \ [REDUCE function nargs arg [arg ...] [AS name]\n    [REDUCE function nargs arg\
-  \ [arg ...] [AS name] ...]] ...]]\n  [APPLY expression AS name [APPLY expression\
-  \ AS name ...]]\n  [FILTER filter]\n  PARAMS nargs vector_param vector_blob [name\
-  \ value ...]\n  [TIMEOUT timeout]"
+syntax_fmt: "FT.HYBRID index SEARCH query [SCORER\_scorer]\n  [YIELD_SCORE_AS\_yield_score_as]\
+  \ VSIM field vector [KNN count K\_k\n  [EF_RUNTIME\_ef_runtime] [YIELD_SCORE_AS\_\
+  yield_score_as] | RANGE\n  count RADIUS\_radius [EPSILON\_epsilon]\n  [YIELD_SCORE_AS\_\
+  yield_score_as]] [FILTER\_filter] [COMBINE <RRF\n  count [CONSTANT\_constant] [WINDOW\_\
+  window]\n  [YIELD_SCORE_AS\_yield_score_as] | LINEAR count [ALPHA\_alpha\n  BETA\_\
+  beta] [WINDOW\_window] [YIELD_SCORE_AS\_yield_score_as]>]\n  [LIMIT offset num]\
+  \ [SORTBY\_sortby [ASC | DESC] | NOSORT] [PARAMS\n  nargs name value [name value\
+  \ ...]] [TIMEOUT\_timeout]\n  [FORMAT\_format] [LOAD\_count field [field ...]] [LOAD\
+  \ *] [GROUPBY\n  nproperties property [property ...] [REDUCE <COUNT |\n  COUNT_DISTINCT\
+  \ | COUNT_DISTINCTISH | SUM | MIN | MAX | AVG |\n  STDDEV | QUANTILE | TOLIST |\
+  \ FIRST_VALUE | RANDOM_SAMPLE> nargs\n  arg [arg ...] [AS\_name] [REDUCE <COUNT\
+  \ | COUNT_DISTINCT |\n  COUNT_DISTINCTISH | SUM | MIN | MAX | AVG | STDDEV | QUANTILE\
+  \ |\n  TOLIST | FIRST_VALUE | RANDOM_SAMPLE> nargs arg [arg ...]\n  [AS\_name] ...]]]\
+  \ [APPLY\_exists\_exists log\_log abs\_abs ceil\_ceil\n  floor\_floor log2\_log2\
+  \ exp\_exp sqrt\_sqrt upper\_upper lower\_lower\n  startswith\_startswith contains\_\
+  contains strlen\_strlen\n  substr\_substr format\_format matched_terms\_matched_terms\n\
+  \  split\_split timefmt\_timefmt parsetime\_parsetime day\_day hour\_hour\n  minute\_\
+  minute month\_month dayofweek\_dayofweek\n  dayofmonth\_dayofmonth dayofyear\_dayofyear\
+  \ year\_year\n  monthofyear\_monthofyear geodistance\_geodistance AS\_name\n  [APPLY\_\
+  exists\_exists log\_log abs\_abs ceil\_ceil floor\_floor\n  log2\_log2 exp\_exp\
+  \ sqrt\_sqrt upper\_upper lower\_lower\n  startswith\_startswith contains\_contains\
+  \ strlen\_strlen\n  substr\_substr format\_format matched_terms\_matched_terms\n\
+  \  split\_split timefmt\_timefmt parsetime\_parsetime day\_day hour\_hour\n  minute\_\
+  minute month\_month dayofweek\_dayofweek\n  dayofmonth\_dayofmonth dayofyear\_dayofyear\
+  \ year\_year\n  monthofyear\_monthofyear geodistance\_geodistance AS\_name ...]]\n\
+  \  [FILTER\_count filter_expression [POLICY\_<ADHOC | BATCHES>]\n  [BATCH_SIZE\_\
+  batch_size_value]]"
 title: FT.HYBRID
 ---
 

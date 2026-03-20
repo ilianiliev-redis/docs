@@ -18,7 +18,7 @@ categories:
 - oss
 - kubernetes
 - clients
-complexity: O(1)
+complexity: O(N) where N is the number of ranks specified
 description: Returns, for each input rank, a floating-point estimation of the value
   with that rank
 group: tdigest

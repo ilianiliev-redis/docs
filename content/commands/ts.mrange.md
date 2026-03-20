@@ -94,6 +94,14 @@ arguments:
       since: 1.8.0
       token: TWA
       type: pure-token
+    - name: countnan
+      since: 8.6.0
+      token: COUNTNAN
+      type: pure-token
+    - name: countall
+      since: 8.6.0
+      token: COUNTALL
+      type: pure-token
     name: aggregator
     token: AGGREGATION
     type: oneof
@@ -170,10 +178,10 @@ syntax: "TS.MRANGE fromTimestamp toTimestamp\n  [LATEST]\n  [FILTER_BY_TS ts...]
 syntax_fmt: "TS.MRANGE fromTimestamp toTimestamp [LATEST] [FILTER_BY_TS\_Timestamp\n\
   \  [Timestamp ...]] [FILTER_BY_VALUE min max] [WITHLABELS |\n  SELECTED_LABELS label1\
   \ [label1 ...]] [COUNT\_count] [[ALIGN\_value]\n  AGGREGATION\_<AVG | FIRST | LAST\
-  \ | MIN | MAX | SUM | RANGE | COUNT\n  | STD.P | STD.S | VAR.P | VAR.S | TWA> bucketDuration\n\
-  \  [BUCKETTIMESTAMP] [EMPTY]] FILTER\_<l=v | l!=v | l= | l!= |\n  l=(v1,v2,...)\
-  \ | l!=(v1,v2,...) [l=v | l!=v | l= | l!= |\n  l=(v1,v2,...) | l!=(v1,v2,...) ...]>\
-  \ [GROUPBY label REDUCE\n  reducer]"
+  \ | MIN | MAX | SUM | RANGE | COUNT\n  | STD.P | STD.S | VAR.P | VAR.S | TWA | COUNTNAN\
+  \ | COUNTALL>\n  bucketDuration [BUCKETTIMESTAMP] [EMPTY]] FILTER\_<l=v | l!=v |\
+  \ l=\n  | l!= | l=(v1,v2,...) | l!=(v1,v2,...) [l=v | l!=v | l= | l!= |\n  l=(v1,v2,...)\
+  \ | l!=(v1,v2,...) ...]> [GROUPBY label REDUCE\n  reducer]"
 title: TS.MRANGE
 ---
 {{< note >}}

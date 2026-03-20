@@ -49,11 +49,11 @@ arguments:
     since: 1.8.0
     token: TWA
     type: pure-token
-  - name: countNaN
+  - name: countnan
     since: 8.6.0
     token: COUNTNAN
     type: pure-token
-  - name: countAll
+  - name: countall
     since: 8.6.0
     token: COUNTALL
     type: pure-token
@@ -89,8 +89,8 @@ summary: Create a compaction rule
 syntax: "TS.CREATERULE sourceKey destKey \n  AGGREGATION aggregator bucketDuration\
   \ \n  [alignTimestamp]\n"
 syntax_fmt: "TS.CREATERULE sourceKey destKey AGGREGATION\_<AVG | FIRST | LAST |\n\
-  \  MIN | MAX | SUM | RANGE | COUNT | STD.P | STD.S | VAR.P | VAR.S |\n  TWA> bucketDuration\
-  \ [alignTimestamp]"
+  \  MIN | MAX | SUM | RANGE | COUNT | STD.P | STD.S | VAR.P | VAR.S |\n  TWA | COUNTNAN\
+  \ | COUNTALL> bucketDuration [alignTimestamp]"
 title: TS.CREATERULE
 ---
 {{< note >}}

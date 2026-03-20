@@ -20,7 +20,8 @@ categories:
 - kubernetes
 - clients
 complexity: O(n * k) where n is the number of items and k is the depth
-description: Adds an item to a Top-k sketch. Multiple items can be added at the same time.
+description: Adds an item to a Top-k sketch. Multiple items can be added at the same
+  time.
 group: topk
 hidden: false
 linkTitle: TOPK.ADD

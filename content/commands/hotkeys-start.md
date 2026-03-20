@@ -68,13 +68,16 @@ description: Starts hotkeys tracking.
 function: hotkeysCommand
 group: server
 hidden: false
+hints:
+- request_policy:special
 linkTitle: HOTKEYS START
 railroad_diagram: /images/railroad/hotkeys-start.svg
 reply_schema:
   const: OK
 since: 8.6.0
 summary: Starts hotkeys tracking.
-syntax_fmt: HOTKEYS START METRICS count [CPU] [NET] [COUNT k] [DURATION seconds] [SAMPLE ratio] [SLOTS count slot [slot ...]]
+syntax_fmt: "HOTKEYS START METRICS\_count [CPU] [NET] [COUNT\_k] [DURATION\_seconds]\n\
+  \  [SAMPLE\_ratio] [SLOTS\_count slot [slot ...]]"
 title: HOTKEYS START
 ---
 Starts hotkeys tracking with specified metrics.

@@ -44,9 +44,10 @@ command_flags:
 - blocking
 - movablekeys
 complexity: 'For each stream mentioned: O(M) with M being the number of elements returned.
-  If M is constant (for example, always asking for the first 10 elements with COUNT), you
-  can consider it O(1). On the other side when XREADGROUP blocks, XADD will pay the
-  O(N) time in order to serve the N clients blocked on the stream getting new data.'
+  If M is constant (for example, always asking for the first 10 elements with COUNT),
+  you can consider it O(1). On the other side when XREADGROUP blocks, XADD will pay
+  the O(N) time in order to serve the N clients blocked on the stream getting new
+  data.'
 description: Returns messages from multiple streams with IDs greater than the ones
   requested. Blocks until a message is available otherwise.
 group: stream

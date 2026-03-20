@@ -23,6 +23,8 @@ description: Release the resources used for hotkey tracking.
 function: hotkeysCommand
 group: server
 hidden: false
+hints:
+- request_policy:special
 linkTitle: HOTKEYS RESET
 railroad_diagram: /images/railroad/hotkeys-reset.svg
 since: 8.6.0
